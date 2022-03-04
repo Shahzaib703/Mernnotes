@@ -3,6 +3,11 @@ const express = require("express");
 const router = express.Router();
 const react = require("./db/modle");
 
+router.use((req, res, next)=> {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 router.get("/api/reactjs/Questions", async (req, resp) => {
   try {
